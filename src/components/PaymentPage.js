@@ -21,7 +21,7 @@ function PaymentPage() {
                 </div>
 
                 <div className='payment-button'>
-                    <button className='btn btn-primary btn-sm btn-block'>Pay Now</button>
+                    <button className='btn btn-primary btn-sm btn-block'>Pay Now1</button>
                 </div>
                 <div className='payment-button'>
                     <button className='btn btn-secondary btn-sm btn-block' onClick={goHome}>Cancel</button>

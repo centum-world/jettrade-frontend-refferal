@@ -95,11 +95,12 @@ const MemberLogin = () => {
         <>
             <div className='memberLogin-page'>
                 <div className='memberLogin-body'>
+                <h4>Welcome to JETTRADE FX</h4>
                     <p>Sign in with credentials</p>
                     <div className='row'>
                         <div className='col'>
                             <div className='memberid-section form-group mb-3'>
-                                <label htmlFor="memberid"> LOGIN ID</label>
+                                <label htmlFor="memberid" style={{color:'white'}}> LOGIN ID</label>
                                 <Input placeholder='Enter user ID '
                                     className='custom-placeholder-memberid'
                                     prefix={<UserOutlined />}
@@ -116,7 +117,7 @@ const MemberLogin = () => {
                     <div className='row'>
                         <div className='col'>
                             <div className='password-section form-group mb-3'>
-                                <label htmlFor="password">PASSWORD</label>
+                                <label htmlFor="password" style={{color:'white'}}>PASSWORD</label>
 
                                 <Input.Password placeholder='Enter your password'
                                     className="custom-placeholder-password"
@@ -132,7 +133,7 @@ const MemberLogin = () => {
                     <div className='row'>
                         <div className='col'>
                             <div className='readme'>
-                                <label>
+                                <label style={{color:'white'}}>
                                     Remember Me &nbsp;
                                     <input
                                         type="checkbox"

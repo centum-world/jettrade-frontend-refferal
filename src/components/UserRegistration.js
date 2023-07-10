@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, NavLink } from 'react-router-dom';
 // import UserLogin from './UserLogin';
 import '../css/UserRegistration.css';
-import { Select, Input, Form, Radio, DatePicker, Button, Upload, message, Typography } from 'antd';
+import { Select, Input, Form, Radio, DatePicker, Button, Upload, message, Typography,Spin } from 'antd';
 
 import { MailOutlined, UserOutlined, FlagOutlined, CalendarOutlined } from '@ant-design/icons';
 import { FaAddressCard } from 'react-icons/fa';
@@ -138,6 +138,7 @@ function UserRegistration() {
         navigate('/');
     }
     const submit = (e) => {
+        setSpin(true);
         e.preventDefault();
         console.log(memberData, phone, aadharImage, aadharBackImage, panImage);
         const formData = new FormData();
@@ -177,23 +178,26 @@ function UserRegistration() {
                         fname: "",
                     })
                     message.success('Registration successful');
+                    setSpin(false);
 
                     navigate('/member-login');
                     console.log(res.data)
                 }).catch((error) => {
 
                     message.warning(error.response.data.message)
+                    setSpin(false);
                 })
         } else {
             axios.post('/member/refferal/other-country-member-registration', formData)
                 .then((res) => {
                     message.success('Registration successful');
                     navigate('/member-login');
-                    console.log(res.data)
+                    // console.log(res.data)
                     setSpin(false);
                 }).catch((error) => {
                     //console.log(error.response.data)
                     message.warning(error.response.data.message)
+                    setSpin(false);
                 })
         }
 
@@ -250,6 +254,7 @@ function UserRegistration() {
         <>
             <div className='registration-page'>
                 <div className='registration-body'>
+                    <h4>Welcome to JETTRADE FX</h4>
                     <p>Sign up with credentials</p>
                     <div className='form-content'>
                         <form>
@@ -369,9 +374,9 @@ function UserRegistration() {
                                         onChange={memberInputs}
                                         style={{ marginBottom: '10px' }}
                                     >
-                                        <Radio value="male">Male</Radio>
-                                        <Radio value="female">Female</Radio>
-                                        <Radio value="other">Other</Radio>
+                                        <Radio value="male" style={{color:'white'}}>Male</Radio>
+                                        <Radio value="female" style={{color:'white'}}>Female</Radio>
+                                        <Radio value="other" style={{color:'white'}}>Other</Radio>
                                     </Radio.Group>
                                 </div>
 
@@ -510,7 +515,7 @@ function UserRegistration() {
 
                             <div className="submit-footer">
 
-                                <Button type='primary' onClick={submit}>Register</Button>
+                                <Button type='primary' onClick={submit} >{spin ? <Spin style={{ color: 'white' }} /> : 'Register'}</Button>
                                 <Button style={{ backgroundColor: 'green', color: 'white' }} onClick={home}>Home</Button>
                                 <p style={{ float: 'right' }}>Already registered <NavLink to='/member-login' >Login</NavLink></p>
 
